@@ -202,14 +202,6 @@ ul {
     text-align: center;
 }
 
-#todo ul li {
-    width: 50%;
-    padding: 1.5em;
-    margin: 1.5em;
-}
-
-
-
 .task:hover {
     background: lightgrey;
     color: white;
@@ -245,7 +237,7 @@ ul {
     margin: 1em;
 }
 
-#progress button {
+#progress > button {
     padding: 0.5em 1em;
     background-color: grey;
     color: white;
@@ -254,9 +246,10 @@ ul {
     margin: 0.5em;
 }
 
-#done ul li {
-    margin: 0.5em;
-    padding: 0.5em;
+ul li {
+    width: auto;
+    padding: 1.5em;
+    margin: 1.5em;
 }
 
 
