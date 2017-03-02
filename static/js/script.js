@@ -1,11 +1,15 @@
 $(document).ready(function() {
+<<<<<<< HEAD
     var mins = "25";
     var secs = "00";
+=======
+>>>>>>> 7bdf4831e101c22781e2fb7951d57d1c1eed611d
     $("#addtask").click(function() {
         var newTask = $("#newtask").val();
         var listElement = $("<li></li>").addClass("task");
         listElement.html(newTask);
         var btn = $("<button> &times;</button>");
+<<<<<<< HEAD
         btn.addClass("close").click(function() {
             $(this).parent().remove();
         });
@@ -52,4 +56,13 @@ $(document).ready(function() {
         });
     });
 
+=======
+        btn.addClass("close");
+        listElement.append(btn);
+        $("#todo ul").append(listElement);
+    });
+    $(".close").click(function() {
+        $(this).parent().remove();
+    })
+>>>>>>> 7bdf4831e101c22781e2fb7951d57d1c1eed611d
 });
