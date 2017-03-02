@@ -9,8 +9,53 @@
     <script src="./static/external/jquery/dist/jquery.js" charset="utf-8"></script>
     <link rel=stylesheet href=./static/css/master.css>
 </head>
-<body>tom
-<script src="./static/external/bootstrap/dist/js/bootstrap.js" charset="utf-8"></script>
-<script src="./static/js/script.js" charset=utf-8></script>
+<body>
+    <div class="container">
+        <h1>Pomodoro Kanban-desu</h1>
+        <div class="row">
+            <div class="col-md-10">
+                <input type="text" placeholder="Nouvelle tâche" id="newtask">
+            </div>
+            <div class="col-md-2">
+                <button type="button" name="button" id="addtask">Ajouter</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 nopadding">
+                <h2 class="footpath">A faire</h2>
+            </div>
+            <div class="col-md-4 nopadding">
+                <h2 class="footpath2">En cours</h2>
+            </div>
+            <div class="col-md-4 nopadding">
+                <h2 class="footpath3">Fait</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4" id="todo">
+                <ul>
+                    <li class="task">Tâche 3 <button type="button" class="close" data-dismiss="modal">&times;</button></li>
+                    <li class="task">Tâche 4 <button type="button" class="close" data-dismiss="modal">&times;</button></li>
+                    <li class="task">Tâche 5 <button type="button" class="close" data-dismiss="modal">&times;</button></li>
+                </ul>
+            </div>
+            <div class="col-md-4" id="progress">
+                <div id="timer">
+                    25:00
+                </div>
+                <button type="button" name="debut">Début</button>
+                <button type="button" name="pause">Pause</button>
+            </div>
+            <div class="col-md-4" id="done">
+                <ul>
+                    <li>Tâches 1</li>
+                    <li>Tâches 2</li>
+                    <li>Tâches 6</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="./static/external/bootstrap/dist/js/bootstrap.js" charset="utf-8"></script>
+    <script src="./static/js/script.js" charset=utf-8></script>
 </body>
 </html>
