@@ -1,20 +1,33 @@
 $(document).ready(function() {
-<<<<<<< HEAD
     var mins = "25";
     var secs = "00";
-=======
->>>>>>> 7bdf4831e101c22781e2fb7951d57d1c1eed611d
+    var timerStatus = 1;
+    var cdfun;
     $("#addtask").click(function() {
         var newTask = $("#newtask").val();
         var listElement = $("<li></li>").addClass("task");
         listElement.html(newTask);
         var btn = $("<button> &times;</button>");
-<<<<<<< HEAD
         btn.addClass("close").click(function() {
             $(this).parent().remove();
         });
         listElement.click(function() {
             $("#progress ul").append($(this));
+            $("#start").html("Reset")
+            cdfun = setInterval(function() {
+                if (mins == 0 && secs == 0) {
+
+                } else if (mins > -1 && secs > -1) {
+                    countdown();
+                };
+            }, 1000);
+            timerStatus = 2;
+            $("#pause").click(function() {
+                $("#start").html("Reprendre")
+                clearInterval(cdfun);
+                timerStatus = 1;
+                console.log(timerStatus);
+            });
         });
         listElement.append(btn);
         $("#todo ul").append(listElement);
@@ -22,19 +35,19 @@ $(document).ready(function() {
 
     function countdown() {
         if (secs == 0) {
-            secs = 59;
+            secs = "59";
             mins--;
         } else {
             secs--;
         };
 
-        if (secs == 0 || secs == 1 || secs == 2 || secs == 2 || secs == 3 || secs == 4 || secs == 5 || secs == 6 || secs == 7 || secs == 8 || secs == 9) {
+        if (secs == 0 || secs == 1 || secs == 2 || secs == 3 || secs == 4 || secs == 5 || secs == 6 || secs == 7 || secs == 8 || secs == 9) {
             $("#secondes").html("0" + secs);
         } else {
             $("#secondes").html(secs);
         };
 
-        if (mins == 0 ||mins == 1 || mins == 2 || mins == 2 || mins == 3 || mins == 4 || mins == 5 || mins == 6 || mins == 7 || mins == 8 || mins == 9) {
+        if (mins == 0 || mins == 1 || mins == 2 || mins == 3 || mins == 4 || mins == 5 || mins == 6 || mins == 7 || mins == 8 || mins == 9) {
             $("#minutes").html("0" + mins);
         } else {
             $("#minutes").html(mins);
@@ -43,26 +56,30 @@ $(document).ready(function() {
     };
 
     $("#start").click(function() {
-        var cdpls = setInterval(function() {
-            if (mins == 0 && secs == 0) {
+        $(this).html("Reset")
+        if (timerStatus == 1) {
+            cdfun = setInterval(function() {
+                if (mins == 0 && secs == 0) {
 
-            } else if (mins > -1 && secs > -1) {
-                countdown();
-            };
-        }, 1000);
+                } else if (mins > -1 && secs > -1) {
+                    countdown();
+                };
+            }, 1000);
+            timerStatus = 2;
+        } else if (timerStatus == 2) {
+            mins = "25";
+            secs = "00";
+            $("#secondes").html(secs);
+            $("#minutes").html(mins);
+            clearInterval(cdfun);
+            timerStatus = 1;
+            $(this).html("Début")
+        };
         $("#pause").click(function() {
             $("#start").html("Reprendre")
-            clearInterval(cdpls);
+            clearInterval(cdfun);
+            timerStatus = 1;
+            console.log(timerStatus);
         });
     });
-
-=======
-        btn.addClass("close");
-        listElement.append(btn);
-        $("#todo ul").append(listElement);
-    });
-    $(".close").click(function() {
-        $(this).parent().remove();
-    })
->>>>>>> 7bdf4831e101c22781e2fb7951d57d1c1eed611d
 });
