@@ -33,27 +33,21 @@ $(document).ready(function() {
             } else {
                 elapsec++
             }
-        console.log(elapsec, elapmin);
         }
-
         if (secs.toString().length == 1) {
             $("#secondes").html("0" + secs);
         } else {
             $("#secondes").html(secs);
         }
-
         if (mins.toString().length == 1) {
             $("#minutes").html("0" + mins);
         } else {
             $("#minutes").html(mins);
-
         }
     }
-
     $("#start").click(function() {
         timerMechanics();
     });
-
     function timerMechanics() {
         $("#start").html("Reset");
         if (timerStatus == 1) {
@@ -63,15 +57,9 @@ $(document).ready(function() {
                     if (finished) {
                         timerReset();
                         elapsedIntoTimeFormat();
-                        var finishedIn = " fini en " + elapmin + ":" + elapsec;
-                        $("#progress ul li").html($("#progress ul li").html() + finishedIn)
-                        elapsec = 0;
-                        elapmin = 0;
-                        $("#progress ul li").appendTo("#done ul");
                     } else {
                         timerReset();
                     }
-
                 } else if (mins > -1 && secs > -1) {
                     countdown();
                     timerStatus = 2;
@@ -88,11 +76,6 @@ $(document).ready(function() {
         $("#stop").click(function() {
             timerReset();
             elapsedIntoTimeFormat();
-            var finishedIn = " fini en " + elapmin + ":" + elapsec;
-            $("#progress ul li").html($("#progress ul li").html() + finishedIn)
-            elapsec = 0;
-            elapmin = 0;
-            $("#progress ul li").appendTo("#done ul");
         });
     }
 
@@ -124,6 +107,8 @@ $(document).ready(function() {
             $(that).parent().append($("#progress ul").children());
             $("#progress ul").append($(that))
         }
+        elapsec = 0;
+        elapmin = 0;
         $(that).off("click");
     }
 
@@ -134,5 +119,11 @@ $(document).ready(function() {
         if (elapsec.toString().length == 1) {
             elapsec = "0" + elapsec;
         }
+        var finishedIn = ", fini en " + elapmin + ":" + elapsec;
+        $("#progress ul li").html($("#progress ul li").html() + finishedIn)
+        elapsec = 0;
+        elapmin = 0;
+        $("#progress ul li").appendTo("#done ul");
+
     }
 });
