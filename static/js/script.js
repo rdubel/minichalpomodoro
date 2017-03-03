@@ -16,11 +16,24 @@ $(document).ready(function() {
             $("#start").html("Reset")
             cdfun = setInterval(function() {
                 if (mins == 0 && secs == 0) {
-
+                    var finished = confirm("Votre tâche est-elle terminée ?");
+                    if (finished) {
+                        $("#start").html("Début")
+                        $("#progress ul li").appendTo("#done ul");
+                        clearInterval(cdfun);
+                    } else {
+                        mins = "25";
+                        secs = "00";
+                        $("#secondes").html(secs);
+                        $("#minutes").html(mins);
+                        clearInterval(cdfun);
+                        timerStatus = 1;
+                        $("#start").html("Début")
+                    }
                 } else if (mins > -1 && secs > -1) {
                     countdown();
                 };
-            }, 1000);
+            }, 10);
             timerStatus = 2;
             $("#pause").click(function() {
                 $("#start").html("Reprendre")
@@ -60,11 +73,25 @@ $(document).ready(function() {
         if (timerStatus == 1) {
             cdfun = setInterval(function() {
                 if (mins == 0 && secs == 0) {
+                    var finished = confirm("Votre tâche est-elle terminée ?");
+                    if (finished) {
+                        $("#start").html("Début")
+                        $("#progress ul li").appendTo("#done ul");
+                        clearInterval(cdfun);
+                    } else {
+                        mins = "25";
+                        secs = "00";
+                        $("#secondes").html(secs);
+                        $("#minutes").html(mins);
+                        clearInterval(cdfun);
+                        timerStatus = 1;
+                        $("#start").html("Début")
+                    }
 
                 } else if (mins > -1 && secs > -1) {
                     countdown();
                 };
-            }, 1000);
+            }, 10);
             timerStatus = 2;
         } else if (timerStatus == 2) {
             mins = "25";
@@ -79,7 +106,6 @@ $(document).ready(function() {
             $("#start").html("Reprendre")
             clearInterval(cdfun);
             timerStatus = 1;
-            console.log(timerStatus);
         });
     });
 });
